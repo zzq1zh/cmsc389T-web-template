@@ -17,4 +17,3 @@ job_one:
       script:|
       cd TestRepo
       git pull
--
