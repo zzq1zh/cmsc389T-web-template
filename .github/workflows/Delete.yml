@@ -1,19 +1,18 @@
-name: update workflow
+name: Delete workflow
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 jobs:
   job_one:
-    name: Deploy
+    name: Clean
     runs-on: ubuntu-latest
     steps:
-    - name: testing
+    - name: clean
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: |
-          cd ../pub/cmsc389T-web-template
-          git pull 
+        script:
+          unalias rm
+          rm -rf ../pub/cmsc389T-web-template
